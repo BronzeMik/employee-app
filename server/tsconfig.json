@@ -1,0 +1,12 @@
+{
+    "include": ["src/**/*"], //monitoring source directory
+    "compilerOptions": {
+        "target": "ES2016", //using es2016 standard for typescript
+        "module": "commonjs", //using commonjs is standard for typescript
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "outDir": "./dist" //output is going to bin/.dist
+    }
+}
