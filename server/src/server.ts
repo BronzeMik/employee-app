@@ -26,6 +26,8 @@ connectToDatabase(ATLAS_URI)
     app.listen(PORT, () => {
       console.log(`Server running at ${PORT}...`);
     });
+
+    module.exports = app;
   })
   .catch((error) => console.error(error));
 
