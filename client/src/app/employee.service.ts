@@ -6,7 +6,7 @@ import { Employee } from './employee';      //Now our employee interface that wa
   providedIn: 'root'
 })
 export class EmployeeService {
-  private url = 'http://localhost:5200';
+  private url = 'https://employee-app-tau.vercel.app/';
   employees$ = signal<Employee[]>([]);          //Create two signals employees$ and employee$
   employee$ = signal<Employee>({} as Employee);
  

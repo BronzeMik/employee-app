@@ -1,12 +1,12 @@
 import * as dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
-import { connectToDatabase } from "./database";
-import { employeeRouter } from "./employee.routes"; //add this after the last import
+import { connectToDatabase } from "../src/database";
+import { employeeRouter } from "../src/employee.routes"; //add this after the last import
 
 // Load environment variables from the .env file, where the ATLAS_URI is configured
 dotenv.config();
-const PORT = process.env.PORT;
+
 const { ATLAS_URI } = process.env;
 // const uri = process.env.ATLAS_URI
 
@@ -16,19 +16,24 @@ if (!ATLAS_URI) {
   );
   process.exit(1);
 }
-
+const app = express();
 connectToDatabase(ATLAS_URI)
   .then(() => {
-    const app = express();
-    app.use(cors());
+    
+    const corsOptions = {
+      origin: '*',
+      optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+    }
+    app.use(cors(corsOptions));
     app.use("/employees", employeeRouter); //Telling it that the employees and to use the emplyeeRouter
     // start the Express server: npx ts-node src/server.ts
-    app.listen(PORT, () => {
-      console.log(`Server running at ${PORT}...`);
+    app.listen(5200, () => {
+      console.log(`Server running at http://localhost:5200...`);
     });
-
-    module.exports = app;
   })
   .catch((error) => console.error(error));
+
+  export default app
+  
 
   
