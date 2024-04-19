@@ -7,17 +7,17 @@ import { employeeRouter } from "../src/employee.routes.js"; //add this after the
 // Load environment variables from the .env file, where the ATLAS_URI is configured
 dotenv.config();
 
-const { ATLAS_URI } = process.env;
+const uri = process.env.ATLAS_URI;
 // const uri = process.env.ATLAS_URI
 
-if (!ATLAS_URI) {
+if (!uri) {
   console.error(
     "No ATLAS_URI environment variable has been defined in config.env"
   );
   process.exit(1);
 }
 
-await connectToDatabase(ATLAS_URI)
+await connectToDatabase(uri)
   const app = express();
     const corsOptions = {
       origin: '*',
