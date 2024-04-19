@@ -2,11 +2,14 @@
     "include": ["src/**/*", "api/index.ts"], //monitoring source directory
     "compilerOptions": {
         "target": "ES2017", //using es2016 standard for typescript
-        "module": "es2022", //using commonjs is standard for typescript
+        "module": "NodeNext", //using commonjs is standard for typescript
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
         "skipLibCheck": true,
         "outDir": "./dist" //output is going to bin/.dist
-    }
+    },
+    "ts-node": {
+        "esm": true, // «———— enabling ESM for ts-node   
+      }, 
 }

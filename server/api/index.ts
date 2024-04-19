@@ -1,11 +1,11 @@
-
+import dotenv from "dotenv"
 import express from "express";
 import cors from "cors";
-import { connectToDatabase } from "../src/database";
-import { employeeRouter } from "../src/employee.routes"; //add this after the last import
+import { connectToDatabase } from "../src/database.js";
+import { employeeRouter } from "../src/employee.routes.js"; //add this after the last import
 
 // Load environment variables from the .env file, where the ATLAS_URI is configured
-
+dotenv.config();
 
 const { ATLAS_URI } = process.env;
 // const uri = process.env.ATLAS_URI
