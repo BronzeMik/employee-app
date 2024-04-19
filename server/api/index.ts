@@ -27,6 +27,9 @@ connectToDatabase(ATLAS_URI)
     app.use(cors(corsOptions));
     app.use("/employees", employeeRouter); //Telling it that the employees and to use the emplyeeRouter
     // start the Express server: npx ts-node src/server.ts
+    app.get('/', (req, res) => {
+      res.send('connected').status(200)
+    })
     app.listen(5200, () => {
       console.log(`Server running at http://localhost:5200...`);
     });
