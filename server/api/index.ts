@@ -16,10 +16,9 @@ if (!ATLAS_URI) {
   );
   process.exit(1);
 }
-const app = express();
-connectToDatabase(ATLAS_URI)
-  .then(() => {
-    
+
+await connectToDatabase(ATLAS_URI)
+  const app = express();
     const corsOptions = {
       origin: '*',
       optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
@@ -28,14 +27,14 @@ connectToDatabase(ATLAS_URI)
     app.use("/employees", employeeRouter); //Telling it that the employees and to use the emplyeeRouter
     // start the Express server: npx ts-node src/server.ts
     app.get('/', (req, res) => {
-      res.send('connected!').status(200)
+      res.send('connected').status(200)
     })
     app.listen(5200, () => {
       console.log(`Server running at http://localhost:5200...`);
     });
-    return app
-  })
-  .catch((error) => console.error(error));
   
-export default app
+
+  export default app
+  
+
   
