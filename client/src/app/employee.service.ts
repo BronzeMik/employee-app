@@ -6,7 +6,7 @@ import { Employee } from './employee';      //Now our employee interface that wa
   providedIn: 'root'
 })
 export class EmployeeService {
-  private url = 'https://employee-app-tau.vercel.app/';
+  private url = 'https://employee-app-mern-api.vercel.app';
   employees$ = signal<Employee[]>([]);          //Create two signals employees$ and employee$
   employee$ = signal<Employee>({} as Employee);
  
@@ -26,7 +26,7 @@ export class EmployeeService {
 
   getEmployee(id: string) {         //This is going to get a single employee (employee$)
     //The ${id} defines our ID so on the server it is going to return an employee  
-    this.httpClient.get<Employee>(`${this.url}/employees/${id}`).subscribe(employee => {
+    this.httpClient.get<Employee>(`${this.url}/record/${id}`).subscribe(employee => {
       this.employee$.set(employee);  //Subscribe to This and set our variable  employee$ = signal<Employee[]>([]);
 
       return this.employee$();
@@ -34,14 +34,14 @@ export class EmployeeService {
   }
 
   createEmployee(employee: Employee) {  //This passes in our employee to this function.  
-    return this.httpClient.post(`${this.url}/employees`, employee, { responseType: 'text' });
+    return this.httpClient.post(`${this.url}/record`, employee, { responseType: 'text' });
   }
 
   updateEmployee(id: string, employee: Employee) {
-    return this.httpClient.put(`${this.url}/employees/${id}`, employee, { responseType: 'text' });
+    return this.httpClient.put(`${this.url}/record/${id}`, employee, { responseType: 'text' });
   }
 
   deleteEmployee(id: string) {
-    return this.httpClient.delete(`${this.url}/employees/${id}`, { responseType: 'text' });
+    return this.httpClient.delete(`${this.url}/record/${id}`, { responseType: 'text' });
   }
 }
