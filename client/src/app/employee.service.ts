@@ -13,7 +13,7 @@ export class EmployeeService {
   constructor(private httpClient: HttpClient) { }
 
   private refreshEmployees() {
-    this.httpClient.get<Employee[]>(`${this.url}/employees`)    //Use httpClient to get /employees from our server 
+    this.httpClient.get<Employee[]>(`${this.url}/record`)    //Use httpClient to get /employees from our server 
       .subscribe(employees => {
         this.employees$.set(employees);             //Subscribe to This and set our variable  employees$ = signal<Employee[]>([]);
       });
